@@ -1,0 +1,22 @@
+spring:
+
+    application:
+      name: store-service
+
+    datasource:
+      url: jdbc:mysql://localhost:3306/acme_store
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+    jpa:
+      hibernate:
+        ddl-auto: update
+server:
+  port: 64071
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true

@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: '@project.artifactId@'
+
+server:
+  port: ${ZUUL_PORT:8080}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  prefix: /acme
+  routes:
+    stores:
+      path: /stores/**
+      url: http://localhost:64071/stores
+      service-id: store-service
+    orders:
+      path: /orders/**
+      url: http://localhost:64072/orders
+      service-id: order-service
+    payments:
+      path: /payments/**
+      url: http://localhost:64073/payments
+      service-id: payment-service
